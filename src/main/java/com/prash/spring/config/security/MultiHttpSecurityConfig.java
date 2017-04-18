@@ -40,15 +40,16 @@ public class MultiHttpSecurityConfig {
 		}
 
 		protected void configure(HttpSecurity http) throws Exception {
-			http.antMatcher("/api/**").authorizeRequests()
-			.antMatchers("/api/date").permitAll()
-			.antMatchers("/api/admin/**").hasRole("ADMIN")
-			.antMatchers("/api/**").hasRole("USER")
+			http.antMatcher("/**/api/**").authorizeRequests()
+			.antMatchers("/**/api/date").permitAll()
+			.antMatchers("/**/api/admin/**").hasRole("ADMIN")
+			.antMatchers("/**/api/**").hasRole("USER")
 			.anyRequest().authenticated().and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.addFilterBefore(new JwtAuthenticationTokenFilter(jwtTokenUtil, tokenHeader),
 					UsernamePasswordAuthenticationFilter.class)
-			.httpBasic().disable();
+			.httpBasic().disable()
+			.csrf().disable();
 		}
 
 		@Override
@@ -76,9 +77,9 @@ public class MultiHttpSecurityConfig {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.headers().frameOptions().sameOrigin().and().csrf().ignoringAntMatchers("/login").and()
+			http.headers().frameOptions().sameOrigin().and().csrf().disable()
 					.authorizeRequests().antMatchers("/error").permitAll().anyRequest().authenticated().and()
-					.formLogin().loginPage("/login").failureUrl("/login?error").permitAll().and().logout().permitAll()
+					.formLogin().loginProcessingUrl("/login").failureUrl("/login?error").permitAll().and().logout().permitAll()
 					.and()
 					.addFilterBefore(new JwtLoginFilter(jwtTokenUtil, tokenHeader, "/login", "POST", authenticationManager()),
 							UsernamePasswordAuthenticationFilter.class)
