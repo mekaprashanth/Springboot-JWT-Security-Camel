@@ -1,5 +1,6 @@
 package com.prash.spring.config.web.support;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -15,7 +16,7 @@ public class TraditionalServerApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        configureApplication(new SpringApplicationBuilder()).run(args);
+    	SpringApplication.run(TraditionalServerApplication.class, args);
     }
 
     private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
