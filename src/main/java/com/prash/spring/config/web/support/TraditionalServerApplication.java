@@ -12,15 +12,11 @@ public class TraditionalServerApplication extends SpringBootServletInitializer {
 
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return configureApplication(builder);
+		 return builder.sources(TraditionalServerApplication.class);
     }
 
     public static void main(String[] args) {
     	SpringApplication.run(TraditionalServerApplication.class, args);
-    }
-
-    private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
-        return builder.sources(TraditionalServerApplication.class);
     }
 
 }

@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prash.spring.beans.User;
 import com.prash.spring.beans.validators.ErrorEnum;
 import com.prash.spring.beans.validators.UserValidation;
-import com.prash.spring.beans.validators.ValidationResult;
 
 @RestController
 public class SampleController {
-	
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping("/api/date")
 	public Date thing() {
+		log.info("Testing Log");
 		return new Date();
 	}
 
