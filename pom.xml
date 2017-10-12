@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<jjwt.version>0.7.0</jjwt.version>
+		<camel.version>2.19.3</camel.version>
 		<docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
 	</properties>
 
@@ -50,6 +51,12 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>
 			<version>2.18.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-boot-starter</artifactId>
+			<version>2.17.0</version>
 		</dependency>
 
 		<dependency>
@@ -109,6 +116,17 @@
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0.1</version>
 			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http4</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
 
 		<!-- <dependency> <groupId>com.h2database</groupId> <artifactId>h2</artifactId> 
