@@ -174,6 +174,8 @@ public class JwtTokenUtil implements Serializable {
 
  
     public Boolean validateToken(String token) {
+    	log.debug("Testing debug from JWTTokenUtil");
+    	log.info("Testing info from JWTTokenUtil");
         final String username = getUsernameFromToken(token);
         return (username !=null &&
                !isTokenExpired(token));
